@@ -1,4 +1,8 @@
 <h1>Rock Paper Scissors Game  </h1>
+
+![Screenshot 2023-09-18 at 7 33 53 AM](https://github.com/muhasina-sinu/CODSOFT/assets/121364702/678eaad6-e4b8-46af-997d-e5a30dc1854e)
+
+
 A simple Rock Paper Scissors game implemented using Python and the Tkinter library.
 
 <h3>Description  </h3>
