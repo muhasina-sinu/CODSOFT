@@ -31,12 +31,15 @@ def stop():
             
 # Function for the "Rock" button    
 def rock():
-    global score1
-    global score2
-    display.delete(0,'end')
-    x=game()
-    option1.configure(text= "rock")
-    option2.configure(text = x)
+    global score1 # Access the global score1 variable to update player's score
+    global score2 # Access the global score2 variable to update computer's score
+    
+    display.delete(0,'end')  # Clear the message display
+    x=game() # Get the computer's random choice of rock, paper, or scissors
+    option1.configure(text= "rock") # Set the label for player's choice to "paper"
+    option2.configure(text = x) # Set the label for computer's choice to the random choice
+
+    # Determine the winner of the round and update scores and message accordingly
     if x=="scissors":
         display.insert(0,"you win")
         score1+=1
