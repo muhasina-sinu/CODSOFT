@@ -1,0 +1,63 @@
+from tkinter import *
+from tkinter import messagebox
+from tkmacosx import Button
+
+# Function to add a task to the listbox
+def add():
+    task = task_entry.get()
+    if task:
+        task_list.insert(END, task)
+        task_entry.delete(0, END)
+    else:
+        messagebox.showwarning("Warning", "Task cannot be empty!")
+
+# Function to delete a selected task from the listbox
+def delete():
+    try:
+        index = task_list.curselection()[0]
+        task_list.delete(index)
+    except IndexError:
+        messagebox.showwarning("Warning", "Select a task to delete!")
+
+# Function to edit a selected task
+def edit():
+    try:
+        index = task_list.curselection()[0]
+        task_entry.insert(0,task_list.get(index))
+        task_list.delete(index)
+        
+    except IndexError:
+        messagebox.showwarning("Warning", "Select a task to edit!")
+
+# Create the main window
+window = Tk()
+
+window.title("To-Do List")
+
+window.geometry("500x400")
+
+window.configure(bg="aquamarine1")
+
+# Create a text entry field for tasks
+task_entry = Entry(window, width=40, bg="aquamarine1",fg="black")
+task_entry.pack(pady = 30)
+
+# Create button for adding tasks
+add_button = Button(window, text="Add Task",bg="yellow",fg="black",borderless=1, command=add)
+add_button.pack()
+
+
+# Create a listbox to display tasks
+task_list = Listbox(window, width=40, bg="aquamarine1",fg="black")
+task_list.pack(pady=20)
+
+# Create buttons for deleting and editing tasks
+edit_button = Button(window, text="Edit Task",fg='black',bg="yellow",borderless=1, command=edit)
+edit_button.pack()
+
+delete_button = Button(window, text="Delete Task",fg='black',bg="yellow",borderless=1, command=delete)
+delete_button.pack()
+
+
+window.mainloop()
+
